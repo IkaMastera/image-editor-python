@@ -9,6 +9,10 @@ for filename in os.listdir(path):
 
     edit = img.filter(ImageFilter.SHARPEN).convert("RGB")
 
+    factor = 1.2  # Example factor for brightness
+    enhancer = ImageEnhance.Brightness(edit)
+    edit = enhancer.enhance(factor)
+
     clean_name = os.path.splitext(filename)[0]
 
     edit.save(f".{pathOut}/{clean_name}_edited.jpg", "JPEG")
